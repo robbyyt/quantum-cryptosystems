@@ -1,0 +1,4 @@
+Florin Mihai Anghel: .trello + Lee-Brickel Algorithm
+David Asandoaiei: .txt + Prange Algorithm
+Corina Elena Bogos: research + Niederreiter Cryptosystem
+Robert Tabacaru: .git + Introduction to Quantum Cryptography
