@@ -1,8 +1,7 @@
 # quantum-cryptosystems
 Project for the 2021-2022 Advanced Software Engineering Techniques course.
 
-<<<<<<< HEAD
-=======
+
 ## Coordinator:
 
 * Ferucio- Laurentiu Tiplea
@@ -24,6 +23,4 @@ Project for the 2021-2022 Advanced Software Engineering Techniques course.
 ## [Requirements Analysis](https://docs.google.com/document/d/1G7XMV7uyviPMP-SHL20hFfyj3BHLfLSd63Yz7bNMpi4/edit?usp=sharing)
 
 
-
->>>>>>> d2d11ff76706e224b61f4a9e831aeeb4573727d1
 
