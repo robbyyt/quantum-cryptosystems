@@ -19,6 +19,8 @@ Project for the 2021-2022 Advanced Software Engineering Techniques course.
 
 ## [State-of-the-art](https://docs.google.com/document/d/1vxeYeJXlzhtSb4_HI-RBMNp3fEpN5A3TpmgOQ4fDSrE/edit?usp=sharing)
 
+## [Requirements Analysis](https://docs.google.com/document/d/1G7XMV7uyviPMP-SHL20hFfyj3BHLfLSd63Yz7bNMpi4/edit?usp=sharing)
+
 
 
 
