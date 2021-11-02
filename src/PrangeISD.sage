@@ -40,8 +40,6 @@ class PrangeISD(GenericAttack):
             outer_iter_count += 1
 
             if is_of_desired_weight(e_curr, self.t):
-                print("e: ", e_curr)
-                print(P.transpose())
                 if verbose:
                     print("ISD finished after %d iterations of outer loop and an average of %d iterations of inner loop"
                         % (outer_iter_count, mean(inner_iter_counts)))
