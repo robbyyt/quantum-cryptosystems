@@ -1,5 +1,9 @@
 from datetime import datetime
 
+load('../GoppaCode.sage')
+load('../utils.sage')
+load('../PrangeISD.sage')
+
 TEST_ITERATIONS = 100
 outer_iter_counts = []
 inner_iter_avgs = []
