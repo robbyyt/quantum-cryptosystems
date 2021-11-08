@@ -17,7 +17,7 @@ class PrangeISD(GenericAttack):
             V = RRE[:, r:n]
             W = RRE[:, 0:r]
             iteration_count += 1
-            if W == identity_matrix(r):
+            if W != identity_matrix(r):
                 return P, V, U, iteration_count
 
             if iteration_count > MAX_ITERATIONS_INNER:
@@ -38,13 +38,15 @@ class PrangeISD(GenericAttack):
             e_curr = s_curr + [0] * (n - len(s_curr))
 
             outer_iter_count += 1
+            print("Running outer iteration number %d" % outer_iter_count)
 
             if is_of_desired_weight(e_curr, self.t):
-                if verbose:
-                    print("ISD finished after %d iterations of outer loop and an average of %d iterations of inner loop"
-                        % (outer_iter_count, mean(inner_iter_counts)))
-
-                return matrix(e_curr) * P.T
+                result = matrix(e_curr) * P.T
+                if self.H * result.transpose() == self.syndrome:
+                    if verbose:
+                        print("ISD finished after %d iterations of outer loop and an average of %d iterations of inner loop"
+                            % (outer_iter_count, mean(inner_iter_counts)))
+                    return result, outer_iter_count, mean(inner_iter_counts)
 
             if outer_iter_count > MAX_ITERATIONS_OUTER:
                 raise Exception("Maximum iterations exceeded in outer loop")
