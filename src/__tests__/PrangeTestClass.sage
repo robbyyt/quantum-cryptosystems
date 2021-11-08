@@ -34,7 +34,7 @@ class PrangeTestClass(unittest.TestCase):
         prange = PrangeISD(H=SAMPLE_PC_MATRIX_2,
                            syndrome=SAMPLE_SYNDROME_2, t=SAMPLE_WEIGHT_2)
 
-        e = prange.attack()
+        e, _, __ = prange.attack()
         decoding = SAMPLE_PC_MATRIX_2 * e.transpose()
 
         self.assertEqual(decoding, SAMPLE_SYNDROME_2)
