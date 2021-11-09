@@ -1,8 +1,8 @@
 load("./GenericAttack.sage")
 load("./utils.sage")
 
-MAX_ITERATIONS_INNER = 10000
-MAX_ITERATIONS_OUTER = 10000
+MAX_ITERATIONS_INNER = 1000
+MAX_ITERATIONS_OUTER = 100000
 
 class PrangeISD(GenericAttack):
     def inner_loop(self):

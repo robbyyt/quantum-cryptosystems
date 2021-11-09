@@ -7,11 +7,11 @@ load('../PrangeISD.sage')
 TEST_ITERATIONS = 100
 outer_iter_counts = []
 inner_iter_avgs = []
-m = 6
-t = 9
+m = 9
+t = 28
 
 for i in range(TEST_ITERATIONS):
-    g = GoppaCode(m=m, t=9)
+    g = GoppaCode(m=m, t=t)
     H_priv = g.get_parity_check_matrix()
     r, n = H_priv.dimensions()
 
