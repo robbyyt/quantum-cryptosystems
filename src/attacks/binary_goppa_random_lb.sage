@@ -1,11 +1,13 @@
+from os import error
+
+
 load('../GoppaCode.sage')
 load('../utils.sage')
-load('../PrangeISD.sage')
+load('../LeeBrickellISD.sage')
 load('../aspects/attack_asp.sage')
 
-
-@save_result_to_file()
-def binary_goppa_random_prange():
+@save_result_to_file
+def binary_goppa_random_lb():
     TEST_ITERATIONS = 2
     outer_iter_counts = []
     inner_iter_avgs = []
@@ -24,11 +26,12 @@ def binary_goppa_random_prange():
 
         enc_message = H_pub * matrix(message).transpose()
 
-        prange = PrangeISD(H=H_pub, syndrome=enc_message, t=g.t)
+        lb = LeeBrickellISD(H=H_pub, syndrome=enc_message, t=g.t)
         try:
-            decrypted_message, outer_iter_count, inner_iter_avg = prange.attack()
-        except:
+            decrypted_message, outer_iter_count, inner_iter_avg = lb.attack()
+        except error:
             # TODO: Save hard-to-compute polynomials
+            print(error)
             continue
 
         success = matrix(GF(2), message) == decrypted_message
@@ -58,5 +61,4 @@ def binary_goppa_random_prange():
         }
     }
 
-
-binary_goppa_random_prange()
+binary_goppa_random_lb()

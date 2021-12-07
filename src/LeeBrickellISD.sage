@@ -65,23 +65,3 @@ class LeeBrickellISD(GenericAttack):
             outer_iter_count += 1
             print("Running outer iteration number %d" % outer_iter_count)
 
-
-SAMPLE_PC_MATRIX_2 = Matrix(GF(2), matrix([
-    [0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1],
-    [0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1],
-    [1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
-    [1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1],
-    [0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0],
-    [0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
-    [0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1]
-])
-)
-
-SAMPLE_SYNDROME_2 = Matrix(GF(2), matrix(8, 1, [0, 1, 1, 0, 0, 1, 0, 0]))
-SAMPLE_WEIGHT_2 = 3
-
-lb = LeeBrickellISD(H=SAMPLE_PC_MATRIX_2,
-                    syndrome=SAMPLE_SYNDROME_2, t=SAMPLE_WEIGHT_2)
-
-lb.attack()
