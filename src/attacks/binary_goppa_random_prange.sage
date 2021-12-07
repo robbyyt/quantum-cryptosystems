@@ -4,13 +4,13 @@ load('../PrangeISD.sage')
 load('../aspects/attack_asp.sage')
 
 
-@save_result_to_file()
+@save_result_to_file
 def binary_goppa_random_prange():
     TEST_ITERATIONS = 2
     outer_iter_counts = []
     inner_iter_avgs = []
-    m = 6
-    t = 9
+    m = 2
+    t = 3
 
     for i in range(TEST_ITERATIONS):
         g = GoppaCode(m=m, t=t)
