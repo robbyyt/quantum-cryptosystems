@@ -1,7 +1,7 @@
 from os import error
 
 
-load('../GoppaCode.sage')
+load('../codes/GoppaCode.sage')
 load('../utils.sage')
 load('../LeeBrickellISD.sage')
 load('../aspects/attack_asp.sage')

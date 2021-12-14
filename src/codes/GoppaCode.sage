@@ -2,10 +2,10 @@ load('./LinearCode.sage')
 
 
 class GoppaCode(LinearCode):
-    def __init__(self, code=None, m=9, t=28):
+    def __init__(self, code=None, m=9, t=28, base_field=2):
         if code == None:
             self.m = m
-            self.F = GF(2 ^ m)
+            self.F = GF(base_field ^ m)
             self.t = t
             self.code = self.generate_code()
             print("Generated Code: ", self.code)
@@ -13,7 +13,6 @@ class GoppaCode(LinearCode):
             self.code = code
 
     def get_parity_check_matrix(self):
-        print(self.code)
         return self.code.parity_check_matrix()
 
     def generate_code(self):

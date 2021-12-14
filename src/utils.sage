@@ -29,3 +29,11 @@ def generate_random_binary_nonsingular_matrix(size):
         S = random_matrix(GF(2), size)
 
     return matrix(ZZ, S)
+
+def generate_random_nonsingular_matrix(size, field_size=2):
+    S = random_matrix(GF(2), size)
+
+    while not S.is_singular() and S.determinant() == 0:
+        S = random_matrix(GF(field_size), size)
+
+    return S
