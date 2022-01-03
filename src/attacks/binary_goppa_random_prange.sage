@@ -6,11 +6,11 @@ load('../aspects/attack_asp.sage')
 
 @save_result_to_file
 def binary_goppa_random_prange():
-    TEST_ITERATIONS = 15
+    TEST_ITERATIONS = 1000
     outer_iter_counts = []
     inner_iter_avgs = []
-    m = 6
-    t = 9
+    m = 7
+    t = 10
 
     for i in range(TEST_ITERATIONS):
         g = GoppaCode(m=m, t=t)

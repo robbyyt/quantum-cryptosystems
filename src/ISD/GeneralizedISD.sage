@@ -23,8 +23,6 @@ class GeneralizedISD:
                 continue
 
             Gt = Gi_inv * G
-            print(len(syndrome))
-            print(I)
             y = syndrome - vector([syndrome[i] for i in I]) * Gt
             if self.p == 0:
                 e = syndrome - y

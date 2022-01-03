@@ -8,6 +8,11 @@ def generate_binary_vector_of_weight_t(len, t):
     shuffle(arr)
     return arr
 
+def random_vector_in_field_of_weight_t(field, len, t):
+    arr = [0] * (len - t) + [field.random_element() for _ in range(t)]
+    shuffle(arr)
+    return arr
+
 def is_of_desired_weight(arr, weight):
     if get_array_weight(arr) != weight:
         return False
