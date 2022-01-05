@@ -1,6 +1,8 @@
 import itertools
 load('../codes/GoppaCode.sage')
 
+MAX_ITERATIONS = 10000
+
 class GeneralizedISD:
     def __init__(self, code, desired_weight, p=2) -> None:
         self.code = code
@@ -38,3 +40,5 @@ class GeneralizedISD:
                                 return syndrome - e, iteration_count
             iteration_count += 1
 
+            if iteration_count > MAX_ITERATIONS:
+                raise Exception("Maximum iterations exceeded")
