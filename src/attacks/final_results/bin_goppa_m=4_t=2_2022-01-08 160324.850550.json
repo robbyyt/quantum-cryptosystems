@@ -1,0 +1,1 @@
+{"m": "4", "t": "2", "failed_ratio": "111/500", "outer_loop_statistics": "{'mean': 2556/389, 'median': 4, 'mode': [1], 'stDev': 2*sqrt(3360047/302253), 'variance': 13440188/302253}", "inner_loop_statistics": "{'mean': 1383227473/992941950, 'median': 1, 'mode': [1], 'stDev': 1/30630600*sqrt(103859833027932009571/201502), 'variance': 103859833027932009571/189055958223852720000}"}

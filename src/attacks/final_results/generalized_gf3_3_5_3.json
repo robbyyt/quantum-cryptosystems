@@ -1,0 +1,1 @@
+{'m': 3, 't': 5, 'succes_rate': 8/125, 'time_avg': 0.014770845631801824, 'outer_loop_statistics': {'mean': 619/312, 'median': 2, 'mode': [1], 'stDev': 1/2*sqrt(34003/4862), 'variance': 34003/19448}}

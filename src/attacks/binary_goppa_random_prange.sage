@@ -6,11 +6,13 @@ load('../aspects/attack_asp.sage')
 
 @save_result_to_file
 def binary_goppa_random_prange():
-    TEST_ITERATIONS = 200
+    TEST_ITERATIONS = 2
     outer_iter_counts = []
+    time_avgs = []
     inner_iter_avgs = []
     m = 7
     t = 10
+    failed_iters = 0
 
     for i in range(TEST_ITERATIONS):
         g = GoppaCode(m=m, t=t)
@@ -26,8 +28,10 @@ def binary_goppa_random_prange():
 
         prange = PrangeISD(H=H_pub, syndrome=enc_message, t=g.t)
         try:
-            decrypted_message, outer_iter_count, inner_iter_avg = prange.attack()
+            decrypted_message, outer_iter_count, inner_iter_avg, outer_iter_times = prange.attack()
+            print(outer_iter_times)
         except:
+            failed_iters += 1
             # TODO: Save hard-to-compute polynomials
             continue
 
@@ -36,12 +40,16 @@ def binary_goppa_random_prange():
             print("Decryption successful")
             outer_iter_counts.append(outer_iter_count)
             inner_iter_avgs.append(inner_iter_avg)
+
         else:
+            failed_iters += 1
             print("Decryption failed")
 
     return {
         "m": m,
         "t": t,
+        "failed_ratio": failed_iters / TEST_ITERATIONS,
+        "time_avg": mean(time_avgs),
         "outer_loop_statistics": {
             "mean": mean(outer_iter_counts),
             "median": median(outer_iter_counts),

@@ -3,11 +3,12 @@ load('../utils.sage')
 load('../ISD/GeneralizedISD.sage')
 
 def fq_goppa_random_isd():
-    TEST_ITERATIONS = 50
+    TEST_ITERATIONS = 250
     outer_iter_counts = []
-    m = 3
-    t = 6
-    base_field = 5
+    avg_times = []
+    m = 4
+    t = 7
+    base_field = 3
     failed_iters = 0
 
     for i in range(TEST_ITERATIONS):
@@ -26,21 +27,25 @@ def fq_goppa_random_isd():
         syndrome = Chan(syndrome_init)
         isd = GeneralizedISD(linear_code, t, p=3)
         try:
-            decoded, iter_count = isd.decode(syndrome)
+            decoded, iter_count, avg_time = isd.decode(syndrome)
         except:
+            print("FAILED")
             failed_iters += 1
             continue
 
         if decoded == syndrome_init:
             print("ISD Worked in %d iterations" % iter_count)
             outer_iter_counts.append(iter_count)
+            avg_times.append(avg_time)
         else:
+            print("Failed")
             failed_iters += 1
 
     return {
         "m": m,
         "t": t,
         "succes_rate": failed_iters / TEST_ITERATIONS,
+        "time_avg": mean(avg_times),
         "outer_loop_statistics": {
             "mean": mean(outer_iter_counts),
             "median": median(outer_iter_counts),

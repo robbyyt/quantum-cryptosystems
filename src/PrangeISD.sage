@@ -2,8 +2,10 @@ load("./GenericAttack.sage")
 load("./utils.sage")
 load("./aspects/attack_asp.sage")
 
+import time
+
 MAX_ITERATIONS_INNER = 1000
-MAX_ITERATIONS_OUTER = 100000
+MAX_ITERATIONS_OUTER = 1000
 
 class PrangeISD(GenericAttack):
     def inner_loop(self):
@@ -27,8 +29,10 @@ class PrangeISD(GenericAttack):
     @print_algorithm_status
     def attack(self):
         inner_iter_counts = []
+        outer_iter_times = []
         outer_iter_count = 0
         while True:
+            start_time = time.time()
             try:
                 P, V, U, inner_iteration_count = self.inner_loop()
             except:
@@ -40,12 +44,13 @@ class PrangeISD(GenericAttack):
             e_curr = s_curr + [0] * (n - len(s_curr))
 
             outer_iter_count += 1
+            outer_iter_times.append(round(time.time() - start_time, 2))
             print("Running outer iteration number %d" % outer_iter_count)
 
             if is_of_desired_weight(e_curr, self.t):
                 result = matrix(e_curr) * P.T
                 if self.H * result.transpose() == self.syndrome:
-                    return result, outer_iter_count, mean(inner_iter_counts)
+                    return result, outer_iter_count, mean(inner_iter_counts), mean(outer_iter_times)
 
             if outer_iter_count > MAX_ITERATIONS_OUTER:
                 raise Exception("Maximum iterations exceeded in outer loop")
